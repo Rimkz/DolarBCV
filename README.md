@@ -1,4 +1,4 @@
-![Banner](https://cdn.discordapp.com/attachments/1424141770245275760/1475547335915208745/Bannergithub.png?ex=699de20b&is=699c908b&hm=a0c83caf28edba21b4589a9910787cd1ff282302a169ed91a9515610496965a4&)
+![Banner](https://cdn.discordapp.com/attachments/1424141770245275760/1475548098162983186/Bannergithub.png?ex=699de2c0&is=699c9140&hm=f723514c8ef3b2321c2222459ba6e75140646124c0a577136d30feae7c517429&)
 # 🏛️ Bot de Tasas BCV - Comunidad Rimk Coffee
 Este proyecto nació de la colaboración para automatizar la información financiera del Banco Central de Venezuela de forma elegante y precisa. Originalmente iniciado por [Marco](https://github.com/Marco202024/bcv-discord-bot) y adaptado por [Rimk](https://www.instagram.com/rimk_ve/) con toques finales para la comunidad de Rimk Coffee.
 
