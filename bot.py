@@ -57,7 +57,7 @@ def enviar_a_discord(url, color, dolar, euro, fecha):
             "fields": [
                 {
                     "name": "**💵 Dólar (USD)**",
-                    "value": "**```diff\n" + dolar + " Bs.\n```**", 
+                    "value": "**```diff\n+" + dolar + " Bs.\n```**", 
                     "inline": True
                 },
                 {
