@@ -1,28 +1,28 @@
-name: Publicar Tasa BCV
+bot de python.pybot de python.pyPublicar Tasa BCV
 #hora de la publicación, desfazado 12.5 horas porque la hora de la publicación bcv no es consistente.
-on:
-  schedule:
+en:
+  cronograma:
     - cron: '15 9 * * 1-5'
-  workflow_dispatch: 
+  flujo de trabajo_despacho: 
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout del código
-        uses: actions/checkout@v3
+empleo:
+  construir:
+    run-on: ubuntu-último
+    pasos:
+      - nombre: Checkout del código
+        usos: acciones/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+      - nombre: Configurar Python
+        usos: acciones/setup-python@v5
+        con:
+          versión python: '3.9'
 
-      - name: Instalar librerías
+      - nombre: Instalar libres
         run: |
-          pip install requests beautifulsoup4 urllib3
+          solicitudes de instalación de pip beautifulsoup4 urllib3
 
-      - name: Ejecutar script
-      #envio a servidores de discord
+      - nombre: Guión ejecutivo
+      #envio a servidores de discordia
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: python bot.py
+          DISCORD_WEBHOOK: ${{ secretos.DISCORD_WEBHOOK }}
+        run: bot de python.py
