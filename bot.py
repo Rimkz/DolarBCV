@@ -66,10 +66,10 @@ def enviar_a_discord(url, color, dolar, euro, fecha):
                     "inline": True
                 }
             ],
-            "image": {"url": "https://cdn.discordapp.com/attachments/1424141770245275760/1475530835791970448/Banner.png?ex=699dd2ad&is=699c812d&hm=c9753688d693e49aa1fa6bc1a98dd75767adb70f1e50cfa22c6eea36040e7da8&"}, # imagen del banner
+            "image": {"url": "https://cdn.discordapp.com/attachments/1424141770245275760/1516957133751582810/DolarBCVpng.png?ex=6a3487ec&is=6a33366c&hm=8a11fb5d37b764d3b89a60df797721d6a0adc9fc2b30ed55e6f13d4a00d9dd34&"}, # imagen del banner
             "footer": {
                 "text": "bcv.org.ve",
-                "icon_url": "https://cdn.discordapp.com/attachments/1424141770245275760/1475524862930976838/banco-central-de-venezuela.png?ex=699dcd1d&is=699c7b9d&hm=38cd35b7e8f7e0deca3fa3f615d093a05c592f61942cb970a58c79f60c0b54a6&"}
+                "icon_url": "https://cdn.discordapp.com/attachments/1424141770245275760/1516958255153414296/SiluetaLogonegro.png?ex=6a3488f7&is=6a333777&hm=ad99e95a4b59db90535ebcf3e9a043c38fe85a0321bd9e4d22d0755d8aaed655&"}
         }]
     }
     requests.post(url, json=payload)
