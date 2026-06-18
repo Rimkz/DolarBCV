@@ -1,11 +1,11 @@
-import requests
-from bs4 import BeautifulSoup
-import os
-import re
-import urllib3
+solicitudes importantes
+desde bs4 importar Hermosa sopa
+importar os
+importar re
+importar urllib3
 
-# Silencia la advertencia molesta en la terminal
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+# Silencia la publicidad molesta en la terminal
+urllib3.deshabilitar_advertencias(urllib3.excepciones.Advertencia de solicititud insegura)
 
 # CONFIGURACIÓN DE SERVIDORES
 SERVIDORES = [
@@ -17,62 +17,62 @@ SERVIDORES = [
 
 URL_BCV = "https://www.bcv.org.ve/"
 
-def limpiar_y_formatear(texto):
-    try:
+def formato limpiar_y_(texto):
+    intentar:
         solo_numeros = re.sub(r'[^0-9,.]', '', texto)
-        if ',' in solo_numeros and '.' in solo_numeros:
-            solo_numeros = solo_numeros.replace('.', '')
-        valor_punto = solo_numeros.replace(',', '.')
+        si ',' en solo_numeros y '.' en solo_numeros:
+            solo_numeros = solo_numeros.reemplazar('.', '')
+        valor_punto = solo_numeros.reemplazar(',', '.')
         valor_final = float(valor_punto)
-        return "{:,.2f}".format(valor_final).replace('.', 'X').replace(',', '.').replace('X', ',')
-    except:
-        return texto
+        retorno "{:,.2f}".formato(valor_final).reemplazar('.', 'X').reemplazar(',', '.').reemplazar('X', ',')
+    excepto:
+        retorno texto
 
 def obtener_tasas():
-    try:
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'}
-        response = requests.get(URL_BCV, headers=headers, verify=False)
-        soup = BeautifulSoup(response.content, 'html.parser')
+    intentar:
+        encabezados = {'Agente de usuario': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, como Gecko) Chrome/119.0.0.0 Safari/537.36'}
+        respuesta = solicitudes.get(URL_BCV, encabezados=encabezados, verificar=Falso)
+        sopa = Hermosa sopa(respuesta.contenido, 'html.parser')
 
-        d_raw = soup.find(id="dolar").get_text()
-        e_raw = soup.find(id="euro").get_text()
-        fecha = soup.find(class_="date-display-single").get_text().strip()
+        d_raw = sopa.encontrar(id="dolar").obtener_texto()
+        e_raw = sopa.encontrar(id="euro").obtener_texto()
+        fecha = sopa.encontrar(clase_="fecha-display-single").obtener_texto().tira()
 
-        dolar = limpiar_y_formatear(d_raw)
-        euro = limpiar_y_formatear(e_raw)
+        dolar = formato limpiar_y_(d_raw)
+        euro = formato limpiar_y_(e_raw)
 
-        for server in SERVIDORES:
-            if server["url"]:
-                enviar_a_discord(server["url"], server["color"], dolar, euro, fecha)
+        para servir en SERVIDORES:
+            si servidor["url"]:
+                enviar_a_discord(servidor["url"], servidor["color"], dolar, euro, fecha)
                 
-    except Exception as e:
-        print(f"Error general: {e}")
+    excepto Excelencia como e:
+        imprimir(f"Error general: {e}")
 
 def enviar_a_discord(url, color, dolar, euro, fecha):
-    payload = {
-        "embeds": [{
-            "title": "🏛️ BCV | Tasa de Cambio Oficial",
-            "description": f"📅 **Fecha:** {fecha}\n",
+    carga útil = {
+        "incrustaciones": [{
+            "típulo": "🏛️ BCV | Tasa de Cambio Oficial",
+            "descripción": f"📅 **Fecha:** {fecha}\n",
             "color": color,
-            "fields": [
+            "campos": [
                 {
-                    "name": "**💵 Dólar (USD)**",
-                    "value": "**```diff\n+ " + dolar + " Bs.\n```**", 
-                    "inline": True
+                    "nombre": "**💵 Dólar (USD)**",
+                    "valor": "**```diff\n+ " + dolar + " Bs.\n```**", 
+                    "en línea": Verdadero
                 },
                 {
-                    "name": "**💶 Euro (EUR)**",
-                    "value": "**```yaml\n" + euro + " Bs.\n```**", 
-                    "inline": True
+                    "nombre": "**💶 Euro (EUR)**",
+                    "valor": "**```yaml\n" + euro + "Bs.\n```**", 
+                    "en línea": Verdadero
                 }
             ],
-            "image": {"url": "https://cdn.discordapp.com/attachments/1424141770245275760/1516957133751582810/DolarBCVpng.png?ex=6a3487ec&is=6a33366c&hm=8a11fb5d37b764d3b89a60df797721d6a0adc9fc2b30ed55e6f13d4a00d9dd34&"}, # imagen del banner
-            "footer": {
-                "text": "bcv.org.ve",
-                "icon_url": "https://cdn.discordapp.com/attachments/1424141770245275760/1516958255153414296/SiluetaLogonegro.png?ex=6a3488f7&is=6a333777&hm=ad99e95a4b59db90535ebcf3e9a043c38fe85a0321bd9e4d22d0755d8aaed655&"}
+            "imagen": {"url": "https://cdn.discordapp.com/attachments/1424141770245275760/1516957133751582810/DolarBCVpng.png?ex=6a3487ec&is=6a33366c&hm=8a11fb5d37b764d3b89a60df797721d6a0adc9fc2b30ed55e6f13d4a00d9dd34&"}, # imagen del banner
+            "pie de página": {
+                "texto": "bcv.org.ve",
+                "icon_url": "https://cdn.discordapp.com/attachments/1424141770245275760/1516958980088397914/SiluetaLogonegro.png?ex=6a3489a4&is=6a333824&hm=e820737f3cc6aa5c36f25eadd81f401dc908c958f7678ec37e2d3f44a8238391&"}
         }]
     }
-    requests.post(url, json=payload)
+    solicitudes.post(url, json=carga útil)
 
-if __name__ == "__main__":
+si __nombre__ == "__principal__":
     obtener_tasas()
